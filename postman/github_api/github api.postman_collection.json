@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "26af2aee-30fb-4005-b783-752f7d84ea29",
+		"name": "github api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30350418"
+	},
+	"item": [
+		{
+			"name": "GET org repo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{gitapi}}/orgs/{{org}}/repos",
+					"host": [
+						"{{gitapi}}"
+					],
+					"path": [
+						"orgs",
+						"{{org}}",
+						"repos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create repo1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/vnd.github+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"repo1\",\"description\":\"This is your first repository\",\"homepage\":\"https://github.com\",\"private\":false,\"has_issues\":true,\"has_projects\":true,\"has_wiki\":true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{gitapi}}/orgs/{{org}}/repos",
+					"host": [
+						"{{gitapi}}"
+					],
+					"path": [
+						"orgs",
+						"{{org}}",
+						"repos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create repo2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"org_repo_name = jsonData['name']\r",
+							"pm.collectionVariables.set(\"org_repo_name\", org_repo_name);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/vnd.github+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"repo2\",\"description\":\"This is your first repository\",\"homepage\":\"https://github.com\",\"private\":false,\"has_issues\":true,\"has_projects\":true,\"has_wiki\":true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{gitapi}}/orgs/{{org}}/repos",
+					"host": [
+						"{{gitapi}}"
+					],
+					"path": [
+						"orgs",
+						"{{org}}",
+						"repos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Repo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"repo3\",\"description\":\"This is your first repository\",\"homepage\":\"https://github.com\",\"private\":true,\"has_issues\":true,\"has_projects\":true,\"has_wiki\":true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{gitapi}}/repos/{{org}}/{{org_repo_name}}",
+					"host": [
+						"{{gitapi}}"
+					],
+					"path": [
+						"repos",
+						"{{org}}",
+						"{{org_repo_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET org repo  new Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Updated Repo Name Matches\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[1].name).to.eql('repo3');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{gitapi}}/orgs/{{org}}/repos",
+					"host": [
+						"{{gitapi}}"
+					],
+					"path": [
+						"orgs",
+						"{{org}}",
+						"repos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete repo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{gitapi}}/repos/{{org}}/{{updated-repo-name}}",
+					"host": [
+						"{{gitapi}}"
+					],
+					"path": [
+						"repos",
+						"{{org}}",
+						"{{updated-repo-name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET org repo  Final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Repo 1 name Matches\", function () {\r",
+							"    var jsonData = pm.response.json()[0];\r",
+							"    pm.expect(jsonData.name).to.eql('repo1');\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{gitapi}}/orgs/{{org}}/repos",
+					"host": [
+						"{{gitapi}}"
+					],
+					"path": [
+						"orgs",
+						"{{org}}",
+						"repos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Uplaod/Create a file",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"message\":\"updated the json file\",\"committer\":{\"name\":\"Harshith Gumparthi\" , \"email\":\"gumparthi.harshith@moolya.com\"},\"content\":\"QWRkZWQgdGhlIHB5dGhvbiBmaWxl\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{gitapi}}//repos/{{org}}/repo1/contents/python_questions.py",
+					"host": [
+						"{{gitapi}}"
+					],
+					"path": [
+						"",
+						"repos",
+						"{{org}}",
+						"repo1",
+						"contents",
+						"python_questions.py"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "gitapi",
+			"value": "https://api.github.com"
+		},
+		{
+			"key": "org",
+			"value": "SDET-training1"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "org_repo_name",
+			"value": ""
+		},
+		{
+			"key": "owner",
+			"value": "Harshith1711"
+		},
+		{
+			"key": "updated-repo-name",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
