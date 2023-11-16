@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231116 15:50:23.731" rpa="false" schemaversion="4">
+<suite id="s1" name="Requests" source="C:\Users\OSR\Desktop\requests_library\requests.robot">
+<test id="s1-t1" name="JSONPlaceholder API" line="36">
+<kw name="Get Response Status Code">
+<doc>Perform a GET request and check if the status code is 200 or not,if not will fail the test</doc>
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>https://jsonplaceholder.typicode.com/posts/1</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20231116 15:50:24.860" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 15:50:24.860" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 16 Nov 2023 10:20:26 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1699756841&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=6ngctlXkAMpv0XHzN85cQXq7VoyR68CMArbNxHMVKoU%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1699756841&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=6ngctlXkAMpv0XHzN85cQXq7VoyR68CMArbNxHMVKoU%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '999', 'X-Ratelimit-Reset': '1699756844', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'max-age=43200', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"124-yiKdLzqO5gfBrJFrcdJ8Yq0LGnU"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'HIT', 'Age': '27569', 'Server': 'cloudflare', 'CF-RAY': '826f0059f9974d9e-FRA', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+} 
+ </msg>
+<msg timestamp="20231116 15:50:24.860" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 15:50:23.913" endtime="20231116 15:50:24.860"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 15:50:24.860" endtime="20231116 15:50:24.860"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20231116 15:50:24.860" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20231116 15:50:24.860" endtime="20231116 15:50:24.860"/>
+</kw>
+<status status="PASS" starttime="20231116 15:50:23.913" endtime="20231116 15:50:24.860"/>
+</kw>
+<kw name="Post Response Status Code">
+<doc>Perform a POST request and check if the status code is 201 ,if not will fail the test</doc>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>https://jsonplaceholder.typicode.com/posts/</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20231116 15:50:25.995" level="INFO">POST Request : url=https://jsonplaceholder.typicode.com/posts/ 
+ path_url=/posts/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 15:50:25.995" level="INFO">POST Response : url=https://jsonplaceholder.typicode.com/posts/ 
+ status=201, reason=Created 
+ headers={'Date': 'Thu, 16 Nov 2023 10:20:27 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '15', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1700130027&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=ez%2BBiQi2gdcx3dMDHMs%2FEp4TgB7KoS4S15mnO9I9umQ%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1700130027&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=ez%2BBiQi2gdcx3dMDHMs%2FEp4TgB7KoS4S15mnO9I9umQ%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '999', 'X-Ratelimit-Reset': '1700130082', 'Vary': 'Origin, X-HTTP-Method-Override, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'Access-Control-Expose-Headers': 'Location', 'Location': 'https://jsonplaceholder.typicode.com/posts//101', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"f-4jjw4Y8q22Yv1PV9m28FczJgjzk"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '826f005f48863639-FRA', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "id": 101
+} 
+ </msg>
+<msg timestamp="20231116 15:50:25.995" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20231116 15:50:24.860" endtime="20231116 15:50:25.995"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20231116 15:50:25.995" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20231116 15:50:25.995" endtime="20231116 15:50:25.995"/>
+</kw>
+<status status="PASS" starttime="20231116 15:50:24.860" endtime="20231116 15:50:25.995"/>
+</kw>
+<kw name="Patch Response Status Code">
+<doc>Perform a PATCH request, provide a payload, and check if the status code is 200,if not will fail the test</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${payload}</var>
+<arg>{'body': "a new body after Patch Request", 'title': "Hello"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231116 15:50:25.995" level="INFO">${payload} = {'body': "a new body after Patch Request", 'title': "Hello"}</msg>
+<status status="PASS" starttime="20231116 15:50:25.995" endtime="20231116 15:50:25.995"/>
+</kw>
+<kw name="PATCH" library="RequestsLibrary">
+<var>${response}</var>
+<arg>https://jsonplaceholder.typicode.com/posts/1</arg>
+<arg>${payload}</arg>
+<doc>Sends a PUT request.</doc>
+<msg timestamp="20231116 15:50:27.735" level="INFO">PATCH Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '60'} 
+ body={'body': "a new body after Patch Request", 'title': "Hello"} 
+ </msg>
+<msg timestamp="20231116 15:50:27.735" level="INFO">PATCH Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 16 Nov 2023 10:20:29 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1700130029&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=gC4UyvJgGIQzM0CpEcHuD%2BSjXHrHgqx6qoQKgo4Cj8k%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1700130029&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=gC4UyvJgGIQzM0CpEcHuD%2BSjXHrHgqx6qoQKgo4Cj8k%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '998', 'X-Ratelimit-Reset': '1700130082', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"124-yiKdLzqO5gfBrJFrcdJ8Yq0LGnU"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '826f006a29c291db-FRA', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+} 
+ </msg>
+<msg timestamp="20231116 15:50:27.735" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 15:50:25.995" endtime="20231116 15:50:27.735"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20231116 15:50:27.735" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20231116 15:50:27.735" endtime="20231116 15:50:27.735"/>
+</kw>
+<status status="PASS" starttime="20231116 15:50:25.995" endtime="20231116 15:50:27.735"/>
+</kw>
+<kw name="Delete Response Status Code">
+<doc>Perform a DELETE request and check if the status code is 200 ,if not will fail the test</doc>
+<kw name="DELETE" library="RequestsLibrary">
+<var>${response}</var>
+<arg>https://jsonplaceholder.typicode.com/posts/1</arg>
+<doc>Sends a DELETE request.</doc>
+<msg timestamp="20231116 15:50:28.824" level="INFO">DELETE Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 15:50:28.824" level="INFO">DELETE Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 16 Nov 2023 10:20:30 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1700130030&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=DM9VEep9f6ciMQ%2FgDjn5ZudOpw3l6EX396rmjOHehfU%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1700130030&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=DM9VEep9f6ciMQ%2FgDjn5ZudOpw3l6EX396rmjOHehfU%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '997', 'X-Ratelimit-Reset': '1700130082', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '826f00726f6b82c0-IAD', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={} 
+ </msg>
+<msg timestamp="20231116 15:50:28.824" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 15:50:27.735" endtime="20231116 15:50:28.824"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20231116 15:50:28.824" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20231116 15:50:28.824" endtime="20231116 15:50:28.824"/>
+</kw>
+<status status="PASS" starttime="20231116 15:50:27.735" endtime="20231116 15:50:28.824"/>
+</kw>
+<kw name="Delete Response JSON body is Empty">
+<doc>Perform a DELETE request and check if the response JSON body is empty</doc>
+<kw name="DELETE" library="RequestsLibrary">
+<var>${response}</var>
+<arg>https://jsonplaceholder.typicode.com/posts/1</arg>
+<doc>Sends a DELETE request.</doc>
+<msg timestamp="20231116 15:50:29.729" level="INFO">DELETE Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 15:50:29.744" level="INFO">DELETE Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 16 Nov 2023 10:20:31 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1700130031&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=GxWgDWRunB4naIXekWIat6NNk6OWTFgL%2BCfZo0%2FY2bU%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1700130031&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=GxWgDWRunB4naIXekWIat6NNk6OWTFgL%2BCfZo0%2FY2bU%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '996', 'X-Ratelimit-Reset': '1700130082', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '826f0077ea3f363b-FRA', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={} 
+ </msg>
+<msg timestamp="20231116 15:50:29.744" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 15:50:28.824" endtime="20231116 15:50:29.744"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.json()}</arg>
+<arg>{}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20231116 15:50:29.744" level="INFO">Argument types are:
+&lt;class 'dict'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20231116 15:50:29.744" endtime="20231116 15:50:29.745"/>
+</kw>
+<status status="PASS" starttime="20231116 15:50:28.824" endtime="20231116 15:50:29.745"/>
+</kw>
+<doc>Run a sequence of API tests</doc>
+<status status="PASS" starttime="20231116 15:50:23.913" endtime="20231116 15:50:29.745"/>
+</test>
+<status status="PASS" starttime="20231116 15:50:23.738" endtime="20231116 15:50:29.745"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Requests">Requests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
